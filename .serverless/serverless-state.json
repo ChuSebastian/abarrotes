@@ -1,0 +1,1918 @@
+{
+  "service": {
+    "service": "api-productos",
+    "serviceObject": {
+      "name": "api-productos"
+    },
+    "provider": {
+      "name": "aws",
+      "runtime": "nodejs20.x",
+      "timeout": 30,
+      "region": "us-east-1",
+      "iam": {
+        "role": "arn:aws:iam::971808350791:role/LabRole"
+      },
+      "environment": {
+        "TABLE_NAME": "ProductosTable-dev",
+        "JWT_SECRET": "clave-super-segura"
+      },
+      "stage": "dev",
+      "versionFunctions": true,
+      "compiledCloudFormationTemplate": {
+        "AWSTemplateFormatVersion": "2010-09-09",
+        "Description": "The AWS CloudFormation template for this Serverless application",
+        "Resources": {
+          "CrearProductoLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/api-productos-dev-crearProducto"
+            }
+          },
+          "ListarProductosLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/api-productos-dev-listarProductos"
+            }
+          },
+          "BuscarProductoLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/api-productos-dev-buscarProducto"
+            }
+          },
+          "ModificarProductoLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/api-productos-dev-modificarProducto"
+            }
+          },
+          "EliminarProductoLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/api-productos-dev-eliminarProducto"
+            }
+          },
+          "CrearProductoLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": "serverless-framework-deployments-us-east-1-b6f3ce8c-49ef",
+                "S3Key": "serverless/api-productos/dev/1751531089261-2025-07-03T08:24:49.261Z/api-productos.zip"
+              },
+              "Handler": "handler.crearProducto",
+              "Runtime": "nodejs20.x",
+              "FunctionName": "api-productos-dev-crearProducto",
+              "MemorySize": 1024,
+              "Timeout": 30,
+              "Environment": {
+                "Variables": {
+                  "TABLE_NAME": "ProductosTable-dev",
+                  "JWT_SECRET": "clave-super-segura"
+                }
+              },
+              "Role": "arn:aws:iam::971808350791:role/LabRole"
+            },
+            "DependsOn": [
+              "CrearProductoLogGroup"
+            ]
+          },
+          "ListarProductosLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": "serverless-framework-deployments-us-east-1-b6f3ce8c-49ef",
+                "S3Key": "serverless/api-productos/dev/1751531089261-2025-07-03T08:24:49.261Z/api-productos.zip"
+              },
+              "Handler": "handler.listarProductos",
+              "Runtime": "nodejs20.x",
+              "FunctionName": "api-productos-dev-listarProductos",
+              "MemorySize": 1024,
+              "Timeout": 30,
+              "Environment": {
+                "Variables": {
+                  "TABLE_NAME": "ProductosTable-dev",
+                  "JWT_SECRET": "clave-super-segura"
+                }
+              },
+              "Role": "arn:aws:iam::971808350791:role/LabRole"
+            },
+            "DependsOn": [
+              "ListarProductosLogGroup"
+            ]
+          },
+          "BuscarProductoLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": "serverless-framework-deployments-us-east-1-b6f3ce8c-49ef",
+                "S3Key": "serverless/api-productos/dev/1751531089261-2025-07-03T08:24:49.261Z/api-productos.zip"
+              },
+              "Handler": "handler.buscarProducto",
+              "Runtime": "nodejs20.x",
+              "FunctionName": "api-productos-dev-buscarProducto",
+              "MemorySize": 1024,
+              "Timeout": 30,
+              "Environment": {
+                "Variables": {
+                  "TABLE_NAME": "ProductosTable-dev",
+                  "JWT_SECRET": "clave-super-segura"
+                }
+              },
+              "Role": "arn:aws:iam::971808350791:role/LabRole"
+            },
+            "DependsOn": [
+              "BuscarProductoLogGroup"
+            ]
+          },
+          "ModificarProductoLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": "serverless-framework-deployments-us-east-1-b6f3ce8c-49ef",
+                "S3Key": "serverless/api-productos/dev/1751531089261-2025-07-03T08:24:49.261Z/api-productos.zip"
+              },
+              "Handler": "handler.modificarProducto",
+              "Runtime": "nodejs20.x",
+              "FunctionName": "api-productos-dev-modificarProducto",
+              "MemorySize": 1024,
+              "Timeout": 30,
+              "Environment": {
+                "Variables": {
+                  "TABLE_NAME": "ProductosTable-dev",
+                  "JWT_SECRET": "clave-super-segura"
+                }
+              },
+              "Role": "arn:aws:iam::971808350791:role/LabRole"
+            },
+            "DependsOn": [
+              "ModificarProductoLogGroup"
+            ]
+          },
+          "EliminarProductoLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": "serverless-framework-deployments-us-east-1-b6f3ce8c-49ef",
+                "S3Key": "serverless/api-productos/dev/1751531089261-2025-07-03T08:24:49.261Z/api-productos.zip"
+              },
+              "Handler": "handler.eliminarProducto",
+              "Runtime": "nodejs20.x",
+              "FunctionName": "api-productos-dev-eliminarProducto",
+              "MemorySize": 1024,
+              "Timeout": 30,
+              "Environment": {
+                "Variables": {
+                  "TABLE_NAME": "ProductosTable-dev",
+                  "JWT_SECRET": "clave-super-segura"
+                }
+              },
+              "Role": "arn:aws:iam::971808350791:role/LabRole"
+            },
+            "DependsOn": [
+              "EliminarProductoLogGroup"
+            ]
+          },
+          "CrearProductoLambdaVersionTjwZAbFmrocnx4y5ACeNb39t1yejE4RnM0aQFruBm4": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "CrearProductoLambdaFunction"
+              },
+              "CodeSha256": "Vbwj/fNmje83Q3DIRGTMxybZe3DMAvWQauBN9uKNRmc="
+            }
+          },
+          "ListarProductosLambdaVersionNZmRMXAc1tDCs4DQWtGFW2CDAE3fTUABQQCEJ8LISI": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "ListarProductosLambdaFunction"
+              },
+              "CodeSha256": "Vbwj/fNmje83Q3DIRGTMxybZe3DMAvWQauBN9uKNRmc="
+            }
+          },
+          "BuscarProductoLambdaVersionUdaROcVHElIo979oQvRGNUNz5e4LYWdDKgwbkMuvIg": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "BuscarProductoLambdaFunction"
+              },
+              "CodeSha256": "Vbwj/fNmje83Q3DIRGTMxybZe3DMAvWQauBN9uKNRmc="
+            }
+          },
+          "ModificarProductoLambdaVersionnVRNwuzOqBUFWKk1QZz41pQRwUUZuLesnBnrDSp3KbU": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "ModificarProductoLambdaFunction"
+              },
+              "CodeSha256": "Vbwj/fNmje83Q3DIRGTMxybZe3DMAvWQauBN9uKNRmc="
+            }
+          },
+          "EliminarProductoLambdaVersionKcuiYSvhVA1dlHrC0qUT1xiEkGJxvpP6ymVXN22ps": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "EliminarProductoLambdaFunction"
+              },
+              "CodeSha256": "Vbwj/fNmje83Q3DIRGTMxybZe3DMAvWQauBN9uKNRmc="
+            }
+          },
+          "ApiGatewayRestApi": {
+            "Type": "AWS::ApiGateway::RestApi",
+            "Properties": {
+              "Name": "dev-api-productos",
+              "EndpointConfiguration": {
+                "Types": [
+                  "EDGE"
+                ]
+              },
+              "Policy": ""
+            }
+          },
+          "ApiGatewayResourceProductos": {
+            "Type": "AWS::ApiGateway::Resource",
+            "Properties": {
+              "ParentId": {
+                "Fn::GetAtt": [
+                  "ApiGatewayRestApi",
+                  "RootResourceId"
+                ]
+              },
+              "PathPart": "productos",
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              }
+            }
+          },
+          "ApiGatewayResourceProductosCodigoVar": {
+            "Type": "AWS::ApiGateway::Resource",
+            "Properties": {
+              "ParentId": {
+                "Ref": "ApiGatewayResourceProductos"
+              },
+              "PathPart": "{codigo}",
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              }
+            }
+          },
+          "ApiGatewayMethodProductosOptions": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "AuthorizationType": "NONE",
+              "HttpMethod": "OPTIONS",
+              "MethodResponses": [
+                {
+                  "StatusCode": "200",
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true,
+                    "method.response.header.Access-Control-Allow-Headers": true,
+                    "method.response.header.Access-Control-Allow-Methods": true
+                  },
+                  "ResponseModels": {}
+                }
+              ],
+              "RequestParameters": {},
+              "Integration": {
+                "Type": "MOCK",
+                "RequestTemplates": {
+                  "application/json": "{statusCode:200}"
+                },
+                "ContentHandling": "CONVERT_TO_TEXT",
+                "IntegrationResponses": [
+                  {
+                    "StatusCode": "200",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'",
+                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent,X-Amzn-Trace-Id'",
+                      "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,POST'"
+                    },
+                    "ResponseTemplates": {
+                      "application/json": ""
+                    }
+                  }
+                ]
+              },
+              "ResourceId": {
+                "Ref": "ApiGatewayResourceProductos"
+              },
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              }
+            }
+          },
+          "ApiGatewayMethodProductosCodigoVarOptions": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "AuthorizationType": "NONE",
+              "HttpMethod": "OPTIONS",
+              "MethodResponses": [
+                {
+                  "StatusCode": "200",
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true,
+                    "method.response.header.Access-Control-Allow-Headers": true,
+                    "method.response.header.Access-Control-Allow-Methods": true
+                  },
+                  "ResponseModels": {}
+                }
+              ],
+              "RequestParameters": {},
+              "Integration": {
+                "Type": "MOCK",
+                "RequestTemplates": {
+                  "application/json": "{statusCode:200}"
+                },
+                "ContentHandling": "CONVERT_TO_TEXT",
+                "IntegrationResponses": [
+                  {
+                    "StatusCode": "200",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'",
+                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent,X-Amzn-Trace-Id'",
+                      "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,DELETE,PUT,GET'"
+                    },
+                    "ResponseTemplates": {
+                      "application/json": ""
+                    }
+                  }
+                ]
+              },
+              "ResourceId": {
+                "Ref": "ApiGatewayResourceProductosCodigoVar"
+              },
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              }
+            }
+          },
+          "ApiGatewayMethodProductosPost": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "HttpMethod": "POST",
+              "RequestParameters": {},
+              "ResourceId": {
+                "Ref": "ApiGatewayResourceProductos"
+              },
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "ApiKeyRequired": false,
+              "AuthorizationType": "NONE",
+              "Integration": {
+                "IntegrationHttpMethod": "POST",
+                "Type": "AWS",
+                "Uri": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":apigateway:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":lambda:path/2015-03-31/functions/",
+                      {
+                        "Fn::GetAtt": [
+                          "CrearProductoLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "/invocations"
+                    ]
+                  ]
+                },
+                "PassthroughBehavior": "NEVER",
+                "RequestTemplates": {
+                  "application/json": "\n    #set( $body = $input.json(\"$\") )\n\n    \n  #define( $loop )\n    {\n    #foreach($key in $map.keySet())\n        #set( $k = $util.escapeJavaScript($key) )\n        #set( $v = $util.escapeJavaScript($map.get($key)).replaceAll(\"\\\\'\", \"'\") )\n        \"$k\":\n          \"$v\"\n          #if( $foreach.hasNext ) , #end\n    #end\n    }\n  #end\n\n  {\n    \"body\": $body,\n    \"method\": \"$context.httpMethod\",\n    \"principalId\": \"$context.authorizer.principalId\",\n    \"stage\": \"$context.stage\",\n\n    \"cognitoPoolClaims\" : {\n       \n       \"sub\": \"$context.authorizer.claims.sub\"\n    },\n\n    #set( $map = $context.authorizer )\n    \"enhancedAuthContext\": $loop,\n\n    #set( $map = $input.params().header )\n    \"headers\": $loop,\n\n    #set( $map = $input.params().querystring )\n    \"query\": $loop,\n\n    #set( $map = $input.params().path )\n    \"path\": $loop,\n\n    #set( $map = $context.identity )\n    \"identity\": $loop,\n\n    #set( $map = $stageVariables )\n    \"stageVariables\": $loop,\n\n    \"requestPath\": \"$context.resourcePath\"\n  }\n\n  ",
+                  "application/x-www-form-urlencoded": "\n    #define( $body )\n      {\n      #foreach( $token in $input.path('$').split('&') )\n        #set( $keyVal = $token.split('=') )\n        #set( $keyValSize = $keyVal.size() )\n        #if( $keyValSize >= 1 )\n          #set( $key = $util.escapeJavaScript($util.urlDecode($keyVal[0])) )\n          #if( $keyValSize >= 2 )\n            #set($val = $util.escapeJavaScript($util.urlDecode($keyVal[1])).replaceAll(\"\\\\'\",\"'\"))\n          #else\n            #set( $val = '' )\n          #end\n          \"$key\": \"$val\"#if($foreach.hasNext),#end\n        #end\n      #end\n      }\n    #end\n\n    \n  #define( $loop )\n    {\n    #foreach($key in $map.keySet())\n        #set( $k = $util.escapeJavaScript($key) )\n        #set( $v = $util.escapeJavaScript($map.get($key)).replaceAll(\"\\\\'\", \"'\") )\n        \"$k\":\n          \"$v\"\n          #if( $foreach.hasNext ) , #end\n    #end\n    }\n  #end\n\n  {\n    \"body\": $body,\n    \"method\": \"$context.httpMethod\",\n    \"principalId\": \"$context.authorizer.principalId\",\n    \"stage\": \"$context.stage\",\n\n    \"cognitoPoolClaims\" : {\n       \n       \"sub\": \"$context.authorizer.claims.sub\"\n    },\n\n    #set( $map = $context.authorizer )\n    \"enhancedAuthContext\": $loop,\n\n    #set( $map = $input.params().header )\n    \"headers\": $loop,\n\n    #set( $map = $input.params().querystring )\n    \"query\": $loop,\n\n    #set( $map = $input.params().path )\n    \"path\": $loop,\n\n    #set( $map = $context.identity )\n    \"identity\": $loop,\n\n    #set( $map = $stageVariables )\n    \"stageVariables\": $loop,\n\n    \"requestPath\": \"$context.resourcePath\"\n  }\n\n  "
+                },
+                "IntegrationResponses": [
+                  {
+                    "StatusCode": "200",
+                    "SelectionPattern": "",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'"
+                    },
+                    "ResponseTemplates": {}
+                  },
+                  {
+                    "StatusCode": "400",
+                    "SelectionPattern": "[\\s\\S]*\\[400\\][\\s\\S]*",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'"
+                    },
+                    "ResponseTemplates": {}
+                  },
+                  {
+                    "StatusCode": "401",
+                    "SelectionPattern": "[\\s\\S]*\\[401\\][\\s\\S]*",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'"
+                    },
+                    "ResponseTemplates": {}
+                  },
+                  {
+                    "StatusCode": "403",
+                    "SelectionPattern": "[\\s\\S]*\\[403\\][\\s\\S]*",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'"
+                    },
+                    "ResponseTemplates": {}
+                  },
+                  {
+                    "StatusCode": "404",
+                    "SelectionPattern": "[\\s\\S]*\\[404\\][\\s\\S]*",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'"
+                    },
+                    "ResponseTemplates": {}
+                  },
+                  {
+                    "StatusCode": "422",
+                    "SelectionPattern": "[\\s\\S]*\\[422\\][\\s\\S]*",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'"
+                    },
+                    "ResponseTemplates": {}
+                  },
+                  {
+                    "StatusCode": "500",
+                    "SelectionPattern": "[\\s\\S]*(Process\\s?exited\\s?before\\s?completing\\s?request|\\[500\\])[\\s\\S]*",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'"
+                    },
+                    "ResponseTemplates": {}
+                  },
+                  {
+                    "StatusCode": "502",
+                    "SelectionPattern": "[\\s\\S]*\\[502\\][\\s\\S]*",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'"
+                    },
+                    "ResponseTemplates": {}
+                  },
+                  {
+                    "StatusCode": "504",
+                    "SelectionPattern": "([\\s\\S]*\\[504\\][\\s\\S]*)|(.*Task timed out after \\d+\\.\\d+ seconds$)",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'"
+                    },
+                    "ResponseTemplates": {}
+                  }
+                ]
+              },
+              "MethodResponses": [
+                {
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true
+                  },
+                  "ResponseModels": {},
+                  "StatusCode": "200"
+                },
+                {
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true
+                  },
+                  "ResponseModels": {},
+                  "StatusCode": "400"
+                },
+                {
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true
+                  },
+                  "ResponseModels": {},
+                  "StatusCode": "401"
+                },
+                {
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true
+                  },
+                  "ResponseModels": {},
+                  "StatusCode": "403"
+                },
+                {
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true
+                  },
+                  "ResponseModels": {},
+                  "StatusCode": "404"
+                },
+                {
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true
+                  },
+                  "ResponseModels": {},
+                  "StatusCode": "422"
+                },
+                {
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true
+                  },
+                  "ResponseModels": {},
+                  "StatusCode": "500"
+                },
+                {
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true
+                  },
+                  "ResponseModels": {},
+                  "StatusCode": "502"
+                },
+                {
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true
+                  },
+                  "ResponseModels": {},
+                  "StatusCode": "504"
+                }
+              ]
+            },
+            "DependsOn": [
+              "CrearProductoLambdaPermissionApiGateway"
+            ]
+          },
+          "ApiGatewayMethodProductosGet": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "HttpMethod": "GET",
+              "RequestParameters": {},
+              "ResourceId": {
+                "Ref": "ApiGatewayResourceProductos"
+              },
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "ApiKeyRequired": false,
+              "AuthorizationType": "NONE",
+              "Integration": {
+                "IntegrationHttpMethod": "POST",
+                "Type": "AWS",
+                "Uri": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":apigateway:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":lambda:path/2015-03-31/functions/",
+                      {
+                        "Fn::GetAtt": [
+                          "ListarProductosLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "/invocations"
+                    ]
+                  ]
+                },
+                "PassthroughBehavior": "NEVER",
+                "RequestTemplates": {
+                  "application/json": "\n    #set( $body = $input.json(\"$\") )\n\n    \n  #define( $loop )\n    {\n    #foreach($key in $map.keySet())\n        #set( $k = $util.escapeJavaScript($key) )\n        #set( $v = $util.escapeJavaScript($map.get($key)).replaceAll(\"\\\\'\", \"'\") )\n        \"$k\":\n          \"$v\"\n          #if( $foreach.hasNext ) , #end\n    #end\n    }\n  #end\n\n  {\n    \"body\": $body,\n    \"method\": \"$context.httpMethod\",\n    \"principalId\": \"$context.authorizer.principalId\",\n    \"stage\": \"$context.stage\",\n\n    \"cognitoPoolClaims\" : {\n       \n       \"sub\": \"$context.authorizer.claims.sub\"\n    },\n\n    #set( $map = $context.authorizer )\n    \"enhancedAuthContext\": $loop,\n\n    #set( $map = $input.params().header )\n    \"headers\": $loop,\n\n    #set( $map = $input.params().querystring )\n    \"query\": $loop,\n\n    #set( $map = $input.params().path )\n    \"path\": $loop,\n\n    #set( $map = $context.identity )\n    \"identity\": $loop,\n\n    #set( $map = $stageVariables )\n    \"stageVariables\": $loop,\n\n    \"requestPath\": \"$context.resourcePath\"\n  }\n\n  ",
+                  "application/x-www-form-urlencoded": "\n    #define( $body )\n      {\n      #foreach( $token in $input.path('$').split('&') )\n        #set( $keyVal = $token.split('=') )\n        #set( $keyValSize = $keyVal.size() )\n        #if( $keyValSize >= 1 )\n          #set( $key = $util.escapeJavaScript($util.urlDecode($keyVal[0])) )\n          #if( $keyValSize >= 2 )\n            #set($val = $util.escapeJavaScript($util.urlDecode($keyVal[1])).replaceAll(\"\\\\'\",\"'\"))\n          #else\n            #set( $val = '' )\n          #end\n          \"$key\": \"$val\"#if($foreach.hasNext),#end\n        #end\n      #end\n      }\n    #end\n\n    \n  #define( $loop )\n    {\n    #foreach($key in $map.keySet())\n        #set( $k = $util.escapeJavaScript($key) )\n        #set( $v = $util.escapeJavaScript($map.get($key)).replaceAll(\"\\\\'\", \"'\") )\n        \"$k\":\n          \"$v\"\n          #if( $foreach.hasNext ) , #end\n    #end\n    }\n  #end\n\n  {\n    \"body\": $body,\n    \"method\": \"$context.httpMethod\",\n    \"principalId\": \"$context.authorizer.principalId\",\n    \"stage\": \"$context.stage\",\n\n    \"cognitoPoolClaims\" : {\n       \n       \"sub\": \"$context.authorizer.claims.sub\"\n    },\n\n    #set( $map = $context.authorizer )\n    \"enhancedAuthContext\": $loop,\n\n    #set( $map = $input.params().header )\n    \"headers\": $loop,\n\n    #set( $map = $input.params().querystring )\n    \"query\": $loop,\n\n    #set( $map = $input.params().path )\n    \"path\": $loop,\n\n    #set( $map = $context.identity )\n    \"identity\": $loop,\n\n    #set( $map = $stageVariables )\n    \"stageVariables\": $loop,\n\n    \"requestPath\": \"$context.resourcePath\"\n  }\n\n  "
+                },
+                "IntegrationResponses": [
+                  {
+                    "StatusCode": "200",
+                    "SelectionPattern": "",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'"
+                    },
+                    "ResponseTemplates": {}
+                  },
+                  {
+                    "StatusCode": "400",
+                    "SelectionPattern": "[\\s\\S]*\\[400\\][\\s\\S]*",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'"
+                    },
+                    "ResponseTemplates": {}
+                  },
+                  {
+                    "StatusCode": "401",
+                    "SelectionPattern": "[\\s\\S]*\\[401\\][\\s\\S]*",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'"
+                    },
+                    "ResponseTemplates": {}
+                  },
+                  {
+                    "StatusCode": "403",
+                    "SelectionPattern": "[\\s\\S]*\\[403\\][\\s\\S]*",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'"
+                    },
+                    "ResponseTemplates": {}
+                  },
+                  {
+                    "StatusCode": "404",
+                    "SelectionPattern": "[\\s\\S]*\\[404\\][\\s\\S]*",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'"
+                    },
+                    "ResponseTemplates": {}
+                  },
+                  {
+                    "StatusCode": "422",
+                    "SelectionPattern": "[\\s\\S]*\\[422\\][\\s\\S]*",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'"
+                    },
+                    "ResponseTemplates": {}
+                  },
+                  {
+                    "StatusCode": "500",
+                    "SelectionPattern": "[\\s\\S]*(Process\\s?exited\\s?before\\s?completing\\s?request|\\[500\\])[\\s\\S]*",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'"
+                    },
+                    "ResponseTemplates": {}
+                  },
+                  {
+                    "StatusCode": "502",
+                    "SelectionPattern": "[\\s\\S]*\\[502\\][\\s\\S]*",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'"
+                    },
+                    "ResponseTemplates": {}
+                  },
+                  {
+                    "StatusCode": "504",
+                    "SelectionPattern": "([\\s\\S]*\\[504\\][\\s\\S]*)|(.*Task timed out after \\d+\\.\\d+ seconds$)",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'"
+                    },
+                    "ResponseTemplates": {}
+                  }
+                ]
+              },
+              "MethodResponses": [
+                {
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true
+                  },
+                  "ResponseModels": {},
+                  "StatusCode": "200"
+                },
+                {
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true
+                  },
+                  "ResponseModels": {},
+                  "StatusCode": "400"
+                },
+                {
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true
+                  },
+                  "ResponseModels": {},
+                  "StatusCode": "401"
+                },
+                {
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true
+                  },
+                  "ResponseModels": {},
+                  "StatusCode": "403"
+                },
+                {
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true
+                  },
+                  "ResponseModels": {},
+                  "StatusCode": "404"
+                },
+                {
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true
+                  },
+                  "ResponseModels": {},
+                  "StatusCode": "422"
+                },
+                {
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true
+                  },
+                  "ResponseModels": {},
+                  "StatusCode": "500"
+                },
+                {
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true
+                  },
+                  "ResponseModels": {},
+                  "StatusCode": "502"
+                },
+                {
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true
+                  },
+                  "ResponseModels": {},
+                  "StatusCode": "504"
+                }
+              ]
+            },
+            "DependsOn": [
+              "ListarProductosLambdaPermissionApiGateway"
+            ]
+          },
+          "ApiGatewayMethodProductosCodigoVarGet": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "HttpMethod": "GET",
+              "RequestParameters": {},
+              "ResourceId": {
+                "Ref": "ApiGatewayResourceProductosCodigoVar"
+              },
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "ApiKeyRequired": false,
+              "AuthorizationType": "NONE",
+              "Integration": {
+                "IntegrationHttpMethod": "POST",
+                "Type": "AWS",
+                "Uri": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":apigateway:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":lambda:path/2015-03-31/functions/",
+                      {
+                        "Fn::GetAtt": [
+                          "BuscarProductoLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "/invocations"
+                    ]
+                  ]
+                },
+                "PassthroughBehavior": "NEVER",
+                "RequestTemplates": {
+                  "application/json": "\n    #set( $body = $input.json(\"$\") )\n\n    \n  #define( $loop )\n    {\n    #foreach($key in $map.keySet())\n        #set( $k = $util.escapeJavaScript($key) )\n        #set( $v = $util.escapeJavaScript($map.get($key)).replaceAll(\"\\\\'\", \"'\") )\n        \"$k\":\n          \"$v\"\n          #if( $foreach.hasNext ) , #end\n    #end\n    }\n  #end\n\n  {\n    \"body\": $body,\n    \"method\": \"$context.httpMethod\",\n    \"principalId\": \"$context.authorizer.principalId\",\n    \"stage\": \"$context.stage\",\n\n    \"cognitoPoolClaims\" : {\n       \n       \"sub\": \"$context.authorizer.claims.sub\"\n    },\n\n    #set( $map = $context.authorizer )\n    \"enhancedAuthContext\": $loop,\n\n    #set( $map = $input.params().header )\n    \"headers\": $loop,\n\n    #set( $map = $input.params().querystring )\n    \"query\": $loop,\n\n    #set( $map = $input.params().path )\n    \"path\": $loop,\n\n    #set( $map = $context.identity )\n    \"identity\": $loop,\n\n    #set( $map = $stageVariables )\n    \"stageVariables\": $loop,\n\n    \"requestPath\": \"$context.resourcePath\"\n  }\n\n  ",
+                  "application/x-www-form-urlencoded": "\n    #define( $body )\n      {\n      #foreach( $token in $input.path('$').split('&') )\n        #set( $keyVal = $token.split('=') )\n        #set( $keyValSize = $keyVal.size() )\n        #if( $keyValSize >= 1 )\n          #set( $key = $util.escapeJavaScript($util.urlDecode($keyVal[0])) )\n          #if( $keyValSize >= 2 )\n            #set($val = $util.escapeJavaScript($util.urlDecode($keyVal[1])).replaceAll(\"\\\\'\",\"'\"))\n          #else\n            #set( $val = '' )\n          #end\n          \"$key\": \"$val\"#if($foreach.hasNext),#end\n        #end\n      #end\n      }\n    #end\n\n    \n  #define( $loop )\n    {\n    #foreach($key in $map.keySet())\n        #set( $k = $util.escapeJavaScript($key) )\n        #set( $v = $util.escapeJavaScript($map.get($key)).replaceAll(\"\\\\'\", \"'\") )\n        \"$k\":\n          \"$v\"\n          #if( $foreach.hasNext ) , #end\n    #end\n    }\n  #end\n\n  {\n    \"body\": $body,\n    \"method\": \"$context.httpMethod\",\n    \"principalId\": \"$context.authorizer.principalId\",\n    \"stage\": \"$context.stage\",\n\n    \"cognitoPoolClaims\" : {\n       \n       \"sub\": \"$context.authorizer.claims.sub\"\n    },\n\n    #set( $map = $context.authorizer )\n    \"enhancedAuthContext\": $loop,\n\n    #set( $map = $input.params().header )\n    \"headers\": $loop,\n\n    #set( $map = $input.params().querystring )\n    \"query\": $loop,\n\n    #set( $map = $input.params().path )\n    \"path\": $loop,\n\n    #set( $map = $context.identity )\n    \"identity\": $loop,\n\n    #set( $map = $stageVariables )\n    \"stageVariables\": $loop,\n\n    \"requestPath\": \"$context.resourcePath\"\n  }\n\n  "
+                },
+                "IntegrationResponses": [
+                  {
+                    "StatusCode": "200",
+                    "SelectionPattern": "",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'"
+                    },
+                    "ResponseTemplates": {}
+                  },
+                  {
+                    "StatusCode": "400",
+                    "SelectionPattern": "[\\s\\S]*\\[400\\][\\s\\S]*",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'"
+                    },
+                    "ResponseTemplates": {}
+                  },
+                  {
+                    "StatusCode": "401",
+                    "SelectionPattern": "[\\s\\S]*\\[401\\][\\s\\S]*",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'"
+                    },
+                    "ResponseTemplates": {}
+                  },
+                  {
+                    "StatusCode": "403",
+                    "SelectionPattern": "[\\s\\S]*\\[403\\][\\s\\S]*",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'"
+                    },
+                    "ResponseTemplates": {}
+                  },
+                  {
+                    "StatusCode": "404",
+                    "SelectionPattern": "[\\s\\S]*\\[404\\][\\s\\S]*",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'"
+                    },
+                    "ResponseTemplates": {}
+                  },
+                  {
+                    "StatusCode": "422",
+                    "SelectionPattern": "[\\s\\S]*\\[422\\][\\s\\S]*",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'"
+                    },
+                    "ResponseTemplates": {}
+                  },
+                  {
+                    "StatusCode": "500",
+                    "SelectionPattern": "[\\s\\S]*(Process\\s?exited\\s?before\\s?completing\\s?request|\\[500\\])[\\s\\S]*",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'"
+                    },
+                    "ResponseTemplates": {}
+                  },
+                  {
+                    "StatusCode": "502",
+                    "SelectionPattern": "[\\s\\S]*\\[502\\][\\s\\S]*",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'"
+                    },
+                    "ResponseTemplates": {}
+                  },
+                  {
+                    "StatusCode": "504",
+                    "SelectionPattern": "([\\s\\S]*\\[504\\][\\s\\S]*)|(.*Task timed out after \\d+\\.\\d+ seconds$)",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'"
+                    },
+                    "ResponseTemplates": {}
+                  }
+                ]
+              },
+              "MethodResponses": [
+                {
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true
+                  },
+                  "ResponseModels": {},
+                  "StatusCode": "200"
+                },
+                {
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true
+                  },
+                  "ResponseModels": {},
+                  "StatusCode": "400"
+                },
+                {
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true
+                  },
+                  "ResponseModels": {},
+                  "StatusCode": "401"
+                },
+                {
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true
+                  },
+                  "ResponseModels": {},
+                  "StatusCode": "403"
+                },
+                {
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true
+                  },
+                  "ResponseModels": {},
+                  "StatusCode": "404"
+                },
+                {
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true
+                  },
+                  "ResponseModels": {},
+                  "StatusCode": "422"
+                },
+                {
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true
+                  },
+                  "ResponseModels": {},
+                  "StatusCode": "500"
+                },
+                {
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true
+                  },
+                  "ResponseModels": {},
+                  "StatusCode": "502"
+                },
+                {
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true
+                  },
+                  "ResponseModels": {},
+                  "StatusCode": "504"
+                }
+              ]
+            },
+            "DependsOn": [
+              "BuscarProductoLambdaPermissionApiGateway"
+            ]
+          },
+          "ApiGatewayMethodProductosCodigoVarPut": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "HttpMethod": "PUT",
+              "RequestParameters": {},
+              "ResourceId": {
+                "Ref": "ApiGatewayResourceProductosCodigoVar"
+              },
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "ApiKeyRequired": false,
+              "AuthorizationType": "NONE",
+              "Integration": {
+                "IntegrationHttpMethod": "POST",
+                "Type": "AWS",
+                "Uri": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":apigateway:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":lambda:path/2015-03-31/functions/",
+                      {
+                        "Fn::GetAtt": [
+                          "ModificarProductoLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "/invocations"
+                    ]
+                  ]
+                },
+                "PassthroughBehavior": "NEVER",
+                "RequestTemplates": {
+                  "application/json": "\n    #set( $body = $input.json(\"$\") )\n\n    \n  #define( $loop )\n    {\n    #foreach($key in $map.keySet())\n        #set( $k = $util.escapeJavaScript($key) )\n        #set( $v = $util.escapeJavaScript($map.get($key)).replaceAll(\"\\\\'\", \"'\") )\n        \"$k\":\n          \"$v\"\n          #if( $foreach.hasNext ) , #end\n    #end\n    }\n  #end\n\n  {\n    \"body\": $body,\n    \"method\": \"$context.httpMethod\",\n    \"principalId\": \"$context.authorizer.principalId\",\n    \"stage\": \"$context.stage\",\n\n    \"cognitoPoolClaims\" : {\n       \n       \"sub\": \"$context.authorizer.claims.sub\"\n    },\n\n    #set( $map = $context.authorizer )\n    \"enhancedAuthContext\": $loop,\n\n    #set( $map = $input.params().header )\n    \"headers\": $loop,\n\n    #set( $map = $input.params().querystring )\n    \"query\": $loop,\n\n    #set( $map = $input.params().path )\n    \"path\": $loop,\n\n    #set( $map = $context.identity )\n    \"identity\": $loop,\n\n    #set( $map = $stageVariables )\n    \"stageVariables\": $loop,\n\n    \"requestPath\": \"$context.resourcePath\"\n  }\n\n  ",
+                  "application/x-www-form-urlencoded": "\n    #define( $body )\n      {\n      #foreach( $token in $input.path('$').split('&') )\n        #set( $keyVal = $token.split('=') )\n        #set( $keyValSize = $keyVal.size() )\n        #if( $keyValSize >= 1 )\n          #set( $key = $util.escapeJavaScript($util.urlDecode($keyVal[0])) )\n          #if( $keyValSize >= 2 )\n            #set($val = $util.escapeJavaScript($util.urlDecode($keyVal[1])).replaceAll(\"\\\\'\",\"'\"))\n          #else\n            #set( $val = '' )\n          #end\n          \"$key\": \"$val\"#if($foreach.hasNext),#end\n        #end\n      #end\n      }\n    #end\n\n    \n  #define( $loop )\n    {\n    #foreach($key in $map.keySet())\n        #set( $k = $util.escapeJavaScript($key) )\n        #set( $v = $util.escapeJavaScript($map.get($key)).replaceAll(\"\\\\'\", \"'\") )\n        \"$k\":\n          \"$v\"\n          #if( $foreach.hasNext ) , #end\n    #end\n    }\n  #end\n\n  {\n    \"body\": $body,\n    \"method\": \"$context.httpMethod\",\n    \"principalId\": \"$context.authorizer.principalId\",\n    \"stage\": \"$context.stage\",\n\n    \"cognitoPoolClaims\" : {\n       \n       \"sub\": \"$context.authorizer.claims.sub\"\n    },\n\n    #set( $map = $context.authorizer )\n    \"enhancedAuthContext\": $loop,\n\n    #set( $map = $input.params().header )\n    \"headers\": $loop,\n\n    #set( $map = $input.params().querystring )\n    \"query\": $loop,\n\n    #set( $map = $input.params().path )\n    \"path\": $loop,\n\n    #set( $map = $context.identity )\n    \"identity\": $loop,\n\n    #set( $map = $stageVariables )\n    \"stageVariables\": $loop,\n\n    \"requestPath\": \"$context.resourcePath\"\n  }\n\n  "
+                },
+                "IntegrationResponses": [
+                  {
+                    "StatusCode": "200",
+                    "SelectionPattern": "",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'"
+                    },
+                    "ResponseTemplates": {}
+                  },
+                  {
+                    "StatusCode": "400",
+                    "SelectionPattern": "[\\s\\S]*\\[400\\][\\s\\S]*",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'"
+                    },
+                    "ResponseTemplates": {}
+                  },
+                  {
+                    "StatusCode": "401",
+                    "SelectionPattern": "[\\s\\S]*\\[401\\][\\s\\S]*",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'"
+                    },
+                    "ResponseTemplates": {}
+                  },
+                  {
+                    "StatusCode": "403",
+                    "SelectionPattern": "[\\s\\S]*\\[403\\][\\s\\S]*",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'"
+                    },
+                    "ResponseTemplates": {}
+                  },
+                  {
+                    "StatusCode": "404",
+                    "SelectionPattern": "[\\s\\S]*\\[404\\][\\s\\S]*",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'"
+                    },
+                    "ResponseTemplates": {}
+                  },
+                  {
+                    "StatusCode": "422",
+                    "SelectionPattern": "[\\s\\S]*\\[422\\][\\s\\S]*",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'"
+                    },
+                    "ResponseTemplates": {}
+                  },
+                  {
+                    "StatusCode": "500",
+                    "SelectionPattern": "[\\s\\S]*(Process\\s?exited\\s?before\\s?completing\\s?request|\\[500\\])[\\s\\S]*",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'"
+                    },
+                    "ResponseTemplates": {}
+                  },
+                  {
+                    "StatusCode": "502",
+                    "SelectionPattern": "[\\s\\S]*\\[502\\][\\s\\S]*",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'"
+                    },
+                    "ResponseTemplates": {}
+                  },
+                  {
+                    "StatusCode": "504",
+                    "SelectionPattern": "([\\s\\S]*\\[504\\][\\s\\S]*)|(.*Task timed out after \\d+\\.\\d+ seconds$)",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'"
+                    },
+                    "ResponseTemplates": {}
+                  }
+                ]
+              },
+              "MethodResponses": [
+                {
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true
+                  },
+                  "ResponseModels": {},
+                  "StatusCode": "200"
+                },
+                {
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true
+                  },
+                  "ResponseModels": {},
+                  "StatusCode": "400"
+                },
+                {
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true
+                  },
+                  "ResponseModels": {},
+                  "StatusCode": "401"
+                },
+                {
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true
+                  },
+                  "ResponseModels": {},
+                  "StatusCode": "403"
+                },
+                {
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true
+                  },
+                  "ResponseModels": {},
+                  "StatusCode": "404"
+                },
+                {
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true
+                  },
+                  "ResponseModels": {},
+                  "StatusCode": "422"
+                },
+                {
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true
+                  },
+                  "ResponseModels": {},
+                  "StatusCode": "500"
+                },
+                {
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true
+                  },
+                  "ResponseModels": {},
+                  "StatusCode": "502"
+                },
+                {
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true
+                  },
+                  "ResponseModels": {},
+                  "StatusCode": "504"
+                }
+              ]
+            },
+            "DependsOn": [
+              "ModificarProductoLambdaPermissionApiGateway"
+            ]
+          },
+          "ApiGatewayMethodProductosCodigoVarDelete": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "HttpMethod": "DELETE",
+              "RequestParameters": {},
+              "ResourceId": {
+                "Ref": "ApiGatewayResourceProductosCodigoVar"
+              },
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "ApiKeyRequired": false,
+              "AuthorizationType": "NONE",
+              "Integration": {
+                "IntegrationHttpMethod": "POST",
+                "Type": "AWS",
+                "Uri": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":apigateway:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":lambda:path/2015-03-31/functions/",
+                      {
+                        "Fn::GetAtt": [
+                          "EliminarProductoLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "/invocations"
+                    ]
+                  ]
+                },
+                "PassthroughBehavior": "NEVER",
+                "RequestTemplates": {
+                  "application/json": "\n    #set( $body = $input.json(\"$\") )\n\n    \n  #define( $loop )\n    {\n    #foreach($key in $map.keySet())\n        #set( $k = $util.escapeJavaScript($key) )\n        #set( $v = $util.escapeJavaScript($map.get($key)).replaceAll(\"\\\\'\", \"'\") )\n        \"$k\":\n          \"$v\"\n          #if( $foreach.hasNext ) , #end\n    #end\n    }\n  #end\n\n  {\n    \"body\": $body,\n    \"method\": \"$context.httpMethod\",\n    \"principalId\": \"$context.authorizer.principalId\",\n    \"stage\": \"$context.stage\",\n\n    \"cognitoPoolClaims\" : {\n       \n       \"sub\": \"$context.authorizer.claims.sub\"\n    },\n\n    #set( $map = $context.authorizer )\n    \"enhancedAuthContext\": $loop,\n\n    #set( $map = $input.params().header )\n    \"headers\": $loop,\n\n    #set( $map = $input.params().querystring )\n    \"query\": $loop,\n\n    #set( $map = $input.params().path )\n    \"path\": $loop,\n\n    #set( $map = $context.identity )\n    \"identity\": $loop,\n\n    #set( $map = $stageVariables )\n    \"stageVariables\": $loop,\n\n    \"requestPath\": \"$context.resourcePath\"\n  }\n\n  ",
+                  "application/x-www-form-urlencoded": "\n    #define( $body )\n      {\n      #foreach( $token in $input.path('$').split('&') )\n        #set( $keyVal = $token.split('=') )\n        #set( $keyValSize = $keyVal.size() )\n        #if( $keyValSize >= 1 )\n          #set( $key = $util.escapeJavaScript($util.urlDecode($keyVal[0])) )\n          #if( $keyValSize >= 2 )\n            #set($val = $util.escapeJavaScript($util.urlDecode($keyVal[1])).replaceAll(\"\\\\'\",\"'\"))\n          #else\n            #set( $val = '' )\n          #end\n          \"$key\": \"$val\"#if($foreach.hasNext),#end\n        #end\n      #end\n      }\n    #end\n\n    \n  #define( $loop )\n    {\n    #foreach($key in $map.keySet())\n        #set( $k = $util.escapeJavaScript($key) )\n        #set( $v = $util.escapeJavaScript($map.get($key)).replaceAll(\"\\\\'\", \"'\") )\n        \"$k\":\n          \"$v\"\n          #if( $foreach.hasNext ) , #end\n    #end\n    }\n  #end\n\n  {\n    \"body\": $body,\n    \"method\": \"$context.httpMethod\",\n    \"principalId\": \"$context.authorizer.principalId\",\n    \"stage\": \"$context.stage\",\n\n    \"cognitoPoolClaims\" : {\n       \n       \"sub\": \"$context.authorizer.claims.sub\"\n    },\n\n    #set( $map = $context.authorizer )\n    \"enhancedAuthContext\": $loop,\n\n    #set( $map = $input.params().header )\n    \"headers\": $loop,\n\n    #set( $map = $input.params().querystring )\n    \"query\": $loop,\n\n    #set( $map = $input.params().path )\n    \"path\": $loop,\n\n    #set( $map = $context.identity )\n    \"identity\": $loop,\n\n    #set( $map = $stageVariables )\n    \"stageVariables\": $loop,\n\n    \"requestPath\": \"$context.resourcePath\"\n  }\n\n  "
+                },
+                "IntegrationResponses": [
+                  {
+                    "StatusCode": "200",
+                    "SelectionPattern": "",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'"
+                    },
+                    "ResponseTemplates": {}
+                  },
+                  {
+                    "StatusCode": "400",
+                    "SelectionPattern": "[\\s\\S]*\\[400\\][\\s\\S]*",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'"
+                    },
+                    "ResponseTemplates": {}
+                  },
+                  {
+                    "StatusCode": "401",
+                    "SelectionPattern": "[\\s\\S]*\\[401\\][\\s\\S]*",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'"
+                    },
+                    "ResponseTemplates": {}
+                  },
+                  {
+                    "StatusCode": "403",
+                    "SelectionPattern": "[\\s\\S]*\\[403\\][\\s\\S]*",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'"
+                    },
+                    "ResponseTemplates": {}
+                  },
+                  {
+                    "StatusCode": "404",
+                    "SelectionPattern": "[\\s\\S]*\\[404\\][\\s\\S]*",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'"
+                    },
+                    "ResponseTemplates": {}
+                  },
+                  {
+                    "StatusCode": "422",
+                    "SelectionPattern": "[\\s\\S]*\\[422\\][\\s\\S]*",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'"
+                    },
+                    "ResponseTemplates": {}
+                  },
+                  {
+                    "StatusCode": "500",
+                    "SelectionPattern": "[\\s\\S]*(Process\\s?exited\\s?before\\s?completing\\s?request|\\[500\\])[\\s\\S]*",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'"
+                    },
+                    "ResponseTemplates": {}
+                  },
+                  {
+                    "StatusCode": "502",
+                    "SelectionPattern": "[\\s\\S]*\\[502\\][\\s\\S]*",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'"
+                    },
+                    "ResponseTemplates": {}
+                  },
+                  {
+                    "StatusCode": "504",
+                    "SelectionPattern": "([\\s\\S]*\\[504\\][\\s\\S]*)|(.*Task timed out after \\d+\\.\\d+ seconds$)",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'"
+                    },
+                    "ResponseTemplates": {}
+                  }
+                ]
+              },
+              "MethodResponses": [
+                {
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true
+                  },
+                  "ResponseModels": {},
+                  "StatusCode": "200"
+                },
+                {
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true
+                  },
+                  "ResponseModels": {},
+                  "StatusCode": "400"
+                },
+                {
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true
+                  },
+                  "ResponseModels": {},
+                  "StatusCode": "401"
+                },
+                {
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true
+                  },
+                  "ResponseModels": {},
+                  "StatusCode": "403"
+                },
+                {
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true
+                  },
+                  "ResponseModels": {},
+                  "StatusCode": "404"
+                },
+                {
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true
+                  },
+                  "ResponseModels": {},
+                  "StatusCode": "422"
+                },
+                {
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true
+                  },
+                  "ResponseModels": {},
+                  "StatusCode": "500"
+                },
+                {
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true
+                  },
+                  "ResponseModels": {},
+                  "StatusCode": "502"
+                },
+                {
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true
+                  },
+                  "ResponseModels": {},
+                  "StatusCode": "504"
+                }
+              ]
+            },
+            "DependsOn": [
+              "EliminarProductoLambdaPermissionApiGateway"
+            ]
+          },
+          "ApiGatewayDeployment1751531078070": {
+            "Type": "AWS::ApiGateway::Deployment",
+            "Properties": {
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "StageName": "dev"
+            },
+            "DependsOn": [
+              "ApiGatewayMethodProductosOptions",
+              "ApiGatewayMethodProductosCodigoVarOptions",
+              "ApiGatewayMethodProductosPost",
+              "ApiGatewayMethodProductosGet",
+              "ApiGatewayMethodProductosCodigoVarGet",
+              "ApiGatewayMethodProductosCodigoVarPut",
+              "ApiGatewayMethodProductosCodigoVarDelete"
+            ]
+          },
+          "CrearProductoLambdaPermissionApiGateway": {
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+              "FunctionName": {
+                "Fn::GetAtt": [
+                  "CrearProductoLambdaFunction",
+                  "Arn"
+                ]
+              },
+              "Action": "lambda:InvokeFunction",
+              "Principal": "apigateway.amazonaws.com",
+              "SourceArn": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition"
+                    },
+                    ":execute-api:",
+                    {
+                      "Ref": "AWS::Region"
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId"
+                    },
+                    ":",
+                    {
+                      "Ref": "ApiGatewayRestApi"
+                    },
+                    "/*/*"
+                  ]
+                ]
+              }
+            }
+          },
+          "ListarProductosLambdaPermissionApiGateway": {
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+              "FunctionName": {
+                "Fn::GetAtt": [
+                  "ListarProductosLambdaFunction",
+                  "Arn"
+                ]
+              },
+              "Action": "lambda:InvokeFunction",
+              "Principal": "apigateway.amazonaws.com",
+              "SourceArn": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition"
+                    },
+                    ":execute-api:",
+                    {
+                      "Ref": "AWS::Region"
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId"
+                    },
+                    ":",
+                    {
+                      "Ref": "ApiGatewayRestApi"
+                    },
+                    "/*/*"
+                  ]
+                ]
+              }
+            }
+          },
+          "BuscarProductoLambdaPermissionApiGateway": {
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+              "FunctionName": {
+                "Fn::GetAtt": [
+                  "BuscarProductoLambdaFunction",
+                  "Arn"
+                ]
+              },
+              "Action": "lambda:InvokeFunction",
+              "Principal": "apigateway.amazonaws.com",
+              "SourceArn": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition"
+                    },
+                    ":execute-api:",
+                    {
+                      "Ref": "AWS::Region"
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId"
+                    },
+                    ":",
+                    {
+                      "Ref": "ApiGatewayRestApi"
+                    },
+                    "/*/*"
+                  ]
+                ]
+              }
+            }
+          },
+          "ModificarProductoLambdaPermissionApiGateway": {
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+              "FunctionName": {
+                "Fn::GetAtt": [
+                  "ModificarProductoLambdaFunction",
+                  "Arn"
+                ]
+              },
+              "Action": "lambda:InvokeFunction",
+              "Principal": "apigateway.amazonaws.com",
+              "SourceArn": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition"
+                    },
+                    ":execute-api:",
+                    {
+                      "Ref": "AWS::Region"
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId"
+                    },
+                    ":",
+                    {
+                      "Ref": "ApiGatewayRestApi"
+                    },
+                    "/*/*"
+                  ]
+                ]
+              }
+            }
+          },
+          "EliminarProductoLambdaPermissionApiGateway": {
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+              "FunctionName": {
+                "Fn::GetAtt": [
+                  "EliminarProductoLambdaFunction",
+                  "Arn"
+                ]
+              },
+              "Action": "lambda:InvokeFunction",
+              "Principal": "apigateway.amazonaws.com",
+              "SourceArn": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition"
+                    },
+                    ":execute-api:",
+                    {
+                      "Ref": "AWS::Region"
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId"
+                    },
+                    ":",
+                    {
+                      "Ref": "ApiGatewayRestApi"
+                    },
+                    "/*/*"
+                  ]
+                ]
+              }
+            }
+          },
+          "ProductosTable": {
+            "Type": "AWS::DynamoDB::Table",
+            "Properties": {
+              "TableName": "ProductosTable-dev",
+              "BillingMode": "PAY_PER_REQUEST",
+              "AttributeDefinitions": [
+                {
+                  "AttributeName": "tenant_id",
+                  "AttributeType": "S"
+                },
+                {
+                  "AttributeName": "codigo",
+                  "AttributeType": "S"
+                }
+              ],
+              "KeySchema": [
+                {
+                  "AttributeName": "tenant_id",
+                  "KeyType": "HASH"
+                },
+                {
+                  "AttributeName": "codigo",
+                  "KeyType": "RANGE"
+                }
+              ]
+            }
+          }
+        },
+        "Outputs": {
+          "ServerlessDeploymentBucketName": {
+            "Value": "serverless-framework-deployments-us-east-1-b6f3ce8c-49ef",
+            "Export": {
+              "Name": "sls-api-productos-dev-ServerlessDeploymentBucketName"
+            }
+          },
+          "CrearProductoLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "CrearProductoLambdaVersionTjwZAbFmrocnx4y5ACeNb39t1yejE4RnM0aQFruBm4"
+            },
+            "Export": {
+              "Name": "sls-api-productos-dev-CrearProductoLambdaFunctionQualifiedArn"
+            }
+          },
+          "ListarProductosLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "ListarProductosLambdaVersionNZmRMXAc1tDCs4DQWtGFW2CDAE3fTUABQQCEJ8LISI"
+            },
+            "Export": {
+              "Name": "sls-api-productos-dev-ListarProductosLambdaFunctionQualifiedArn"
+            }
+          },
+          "BuscarProductoLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "BuscarProductoLambdaVersionUdaROcVHElIo979oQvRGNUNz5e4LYWdDKgwbkMuvIg"
+            },
+            "Export": {
+              "Name": "sls-api-productos-dev-BuscarProductoLambdaFunctionQualifiedArn"
+            }
+          },
+          "ModificarProductoLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "ModificarProductoLambdaVersionnVRNwuzOqBUFWKk1QZz41pQRwUUZuLesnBnrDSp3KbU"
+            },
+            "Export": {
+              "Name": "sls-api-productos-dev-ModificarProductoLambdaFunctionQualifiedArn"
+            }
+          },
+          "EliminarProductoLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "EliminarProductoLambdaVersionKcuiYSvhVA1dlHrC0qUT1xiEkGJxvpP6ymVXN22ps"
+            },
+            "Export": {
+              "Name": "sls-api-productos-dev-EliminarProductoLambdaFunctionQualifiedArn"
+            }
+          },
+          "ServiceEndpoint": {
+            "Description": "URL of the service endpoint",
+            "Value": {
+              "Fn::Join": [
+                "",
+                [
+                  "https://",
+                  {
+                    "Ref": "ApiGatewayRestApi"
+                  },
+                  ".execute-api.",
+                  {
+                    "Ref": "AWS::Region"
+                  },
+                  ".",
+                  {
+                    "Ref": "AWS::URLSuffix"
+                  },
+                  "/dev"
+                ]
+              ]
+            },
+            "Export": {
+              "Name": "sls-api-productos-dev-ServiceEndpoint"
+            }
+          }
+        }
+      },
+      "vpc": {}
+    },
+    "pluginsData": {},
+    "functions": {
+      "crearProducto": {
+        "handler": "handler.crearProducto",
+        "events": [
+          {
+            "http": {
+              "path": "productos",
+              "method": "post",
+              "cors": {
+                "origin": "*",
+                "methods": [
+                  "OPTIONS",
+                  "POST"
+                ],
+                "headers": [
+                  "Content-Type",
+                  "X-Amz-Date",
+                  "Authorization",
+                  "X-Api-Key",
+                  "X-Amz-Security-Token",
+                  "X-Amz-User-Agent",
+                  "X-Amzn-Trace-Id"
+                ],
+                "allowCredentials": false
+              },
+              "integration": "AWS",
+              "request": {
+                "passThrough": "NEVER"
+              },
+              "response": {
+                "statusCodes": {
+                  "200": {
+                    "pattern": ""
+                  },
+                  "400": {
+                    "pattern": "[\\s\\S]*\\[400\\][\\s\\S]*"
+                  },
+                  "401": {
+                    "pattern": "[\\s\\S]*\\[401\\][\\s\\S]*"
+                  },
+                  "403": {
+                    "pattern": "[\\s\\S]*\\[403\\][\\s\\S]*"
+                  },
+                  "404": {
+                    "pattern": "[\\s\\S]*\\[404\\][\\s\\S]*"
+                  },
+                  "422": {
+                    "pattern": "[\\s\\S]*\\[422\\][\\s\\S]*"
+                  },
+                  "500": {
+                    "pattern": "[\\s\\S]*(Process\\s?exited\\s?before\\s?completing\\s?request|\\[500\\])[\\s\\S]*"
+                  },
+                  "502": {
+                    "pattern": "[\\s\\S]*\\[502\\][\\s\\S]*"
+                  },
+                  "504": {
+                    "pattern": "([\\s\\S]*\\[504\\][\\s\\S]*)|(.*Task timed out after \\d+\\.\\d+ seconds$)"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "name": "api-productos-dev-crearProducto",
+        "package": {},
+        "memory": 1024,
+        "timeout": 30,
+        "runtime": "nodejs20.x",
+        "vpc": {},
+        "versionLogicalId": "CrearProductoLambdaVersionTjwZAbFmrocnx4y5ACeNb39t1yejE4RnM0aQFruBm4"
+      },
+      "listarProductos": {
+        "handler": "handler.listarProductos",
+        "events": [
+          {
+            "http": {
+              "path": "productos",
+              "method": "get",
+              "cors": {
+                "origin": "*",
+                "methods": [
+                  "OPTIONS",
+                  "GET"
+                ],
+                "headers": [
+                  "Content-Type",
+                  "X-Amz-Date",
+                  "Authorization",
+                  "X-Api-Key",
+                  "X-Amz-Security-Token",
+                  "X-Amz-User-Agent",
+                  "X-Amzn-Trace-Id"
+                ],
+                "allowCredentials": false
+              },
+              "integration": "AWS",
+              "request": {
+                "passThrough": "NEVER"
+              },
+              "response": {
+                "statusCodes": {
+                  "$ref": "$[\"service\"][\"functions\"][\"crearProducto\"][\"events\"][0][\"http\"][\"response\"][\"statusCodes\"]"
+                }
+              }
+            }
+          }
+        ],
+        "name": "api-productos-dev-listarProductos",
+        "package": {},
+        "memory": 1024,
+        "timeout": 30,
+        "runtime": "nodejs20.x",
+        "vpc": {},
+        "versionLogicalId": "ListarProductosLambdaVersionNZmRMXAc1tDCs4DQWtGFW2CDAE3fTUABQQCEJ8LISI"
+      },
+      "buscarProducto": {
+        "handler": "handler.buscarProducto",
+        "events": [
+          {
+            "http": {
+              "path": "productos/{codigo}",
+              "method": "get",
+              "cors": {
+                "origin": "*",
+                "methods": [
+                  "OPTIONS",
+                  "GET"
+                ],
+                "headers": [
+                  "Content-Type",
+                  "X-Amz-Date",
+                  "Authorization",
+                  "X-Api-Key",
+                  "X-Amz-Security-Token",
+                  "X-Amz-User-Agent",
+                  "X-Amzn-Trace-Id"
+                ],
+                "allowCredentials": false
+              },
+              "integration": "AWS",
+              "request": {
+                "passThrough": "NEVER"
+              },
+              "response": {
+                "statusCodes": {
+                  "$ref": "$[\"service\"][\"functions\"][\"crearProducto\"][\"events\"][0][\"http\"][\"response\"][\"statusCodes\"]"
+                }
+              }
+            }
+          }
+        ],
+        "name": "api-productos-dev-buscarProducto",
+        "package": {},
+        "memory": 1024,
+        "timeout": 30,
+        "runtime": "nodejs20.x",
+        "vpc": {},
+        "versionLogicalId": "BuscarProductoLambdaVersionUdaROcVHElIo979oQvRGNUNz5e4LYWdDKgwbkMuvIg"
+      },
+      "modificarProducto": {
+        "handler": "handler.modificarProducto",
+        "events": [
+          {
+            "http": {
+              "path": "productos/{codigo}",
+              "method": "put",
+              "cors": {
+                "origin": "*",
+                "methods": [
+                  "OPTIONS",
+                  "PUT"
+                ],
+                "headers": [
+                  "Content-Type",
+                  "X-Amz-Date",
+                  "Authorization",
+                  "X-Api-Key",
+                  "X-Amz-Security-Token",
+                  "X-Amz-User-Agent",
+                  "X-Amzn-Trace-Id"
+                ],
+                "allowCredentials": false
+              },
+              "integration": "AWS",
+              "request": {
+                "passThrough": "NEVER"
+              },
+              "response": {
+                "statusCodes": {
+                  "$ref": "$[\"service\"][\"functions\"][\"crearProducto\"][\"events\"][0][\"http\"][\"response\"][\"statusCodes\"]"
+                }
+              }
+            }
+          }
+        ],
+        "name": "api-productos-dev-modificarProducto",
+        "package": {},
+        "memory": 1024,
+        "timeout": 30,
+        "runtime": "nodejs20.x",
+        "vpc": {},
+        "versionLogicalId": "ModificarProductoLambdaVersionnVRNwuzOqBUFWKk1QZz41pQRwUUZuLesnBnrDSp3KbU"
+      },
+      "eliminarProducto": {
+        "handler": "handler.eliminarProducto",
+        "events": [
+          {
+            "http": {
+              "path": "productos/{codigo}",
+              "method": "delete",
+              "cors": {
+                "origin": "*",
+                "methods": [
+                  "OPTIONS",
+                  "DELETE"
+                ],
+                "headers": [
+                  "Content-Type",
+                  "X-Amz-Date",
+                  "Authorization",
+                  "X-Api-Key",
+                  "X-Amz-Security-Token",
+                  "X-Amz-User-Agent",
+                  "X-Amzn-Trace-Id"
+                ],
+                "allowCredentials": false
+              },
+              "integration": "AWS",
+              "request": {
+                "passThrough": "NEVER"
+              },
+              "response": {
+                "statusCodes": {
+                  "$ref": "$[\"service\"][\"functions\"][\"crearProducto\"][\"events\"][0][\"http\"][\"response\"][\"statusCodes\"]"
+                }
+              }
+            }
+          }
+        ],
+        "name": "api-productos-dev-eliminarProducto",
+        "package": {},
+        "memory": 1024,
+        "timeout": 30,
+        "runtime": "nodejs20.x",
+        "vpc": {},
+        "versionLogicalId": "EliminarProductoLambdaVersionKcuiYSvhVA1dlHrC0qUT1xiEkGJxvpP6ymVXN22ps"
+      }
+    },
+    "resources": {
+      "Resources": {
+        "ProductosTable": {
+          "Type": "AWS::DynamoDB::Table",
+          "Properties": {
+            "TableName": "ProductosTable-dev",
+            "BillingMode": "PAY_PER_REQUEST",
+            "AttributeDefinitions": [
+              {
+                "AttributeName": "tenant_id",
+                "AttributeType": "S"
+              },
+              {
+                "AttributeName": "codigo",
+                "AttributeType": "S"
+              }
+            ],
+            "KeySchema": [
+              {
+                "AttributeName": "tenant_id",
+                "KeyType": "HASH"
+              },
+              {
+                "AttributeName": "codigo",
+                "KeyType": "RANGE"
+              }
+            ]
+          }
+        }
+      },
+      "Outputs": {}
+    },
+    "configValidationMode": "warn",
+    "serviceFilename": "serverless",
+    "initialServerlessConfig": {
+      "org": "sebastianchu",
+      "service": "api-productos",
+      "provider": {
+        "$ref": "$[\"service\"][\"provider\"]"
+      },
+      "functions": {
+        "$ref": "$[\"service\"][\"functions\"]"
+      },
+      "resources": {
+        "$ref": "$[\"service\"][\"resources\"]"
+      }
+    },
+    "appId": null,
+    "org": "sebastianchu",
+    "orgId": null,
+    "layers": {},
+    "artifact": "/home/ubuntu/abarrotes/.serverless/api-productos.zip"
+  },
+  "package": {
+    "artifactDirectoryName": "serverless/api-productos/dev/1751531089261-2025-07-03T08:24:49.261Z",
+    "artifact": "api-productos.zip"
+  }
+}

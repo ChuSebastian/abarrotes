@@ -7,7 +7,7 @@ const TABLE_NAME = process.env.TABLE_NAME;
 module.exports.crearProducto = async (event) => {
   try {
     const tenant_id = validarToken(event);
-    const body = JSON.parse(event.body);
+    const body = typeof event.body === "string" ? JSON.parse(event.body) : event.body;
 
     const item = {
       tenant_id,
@@ -76,7 +76,7 @@ module.exports.modificarProducto = async (event) => {
   try {
     const tenant_id = validarToken(event);
     const codigo = event.pathParameters.codigo;
-    const body = JSON.parse(event.body);
+    const body = typeof event.body === "string" ? JSON.parse(event.body) : event.body;
 
     const params = {
       TableName: TABLE_NAME,
