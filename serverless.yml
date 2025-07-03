@@ -1,0 +1,72 @@
+service: api-productos
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: us-east-1
+  stage: ${opt:stage, 'dev'}
+  environment:
+    TABLE_NAME: ProductosTable-${self:provider.stage}
+    JWT_SECRET: ${env:JWT_SECRET}
+
+functions:
+  crearProducto:
+    handler: handler.crearProducto
+    events:
+      - http:
+          path: productos
+          method: post
+          cors: true
+
+  listarProductos:
+    handler: handler.listarProductos
+    events:
+      - http:
+          path: productos
+          method: get
+          cors: true
+
+  buscarProducto:
+    handler: handler.buscarProducto
+    events:
+      - http:
+          path: productos/{codigo}
+          method: get
+          cors: true
+
+  modificarProducto:
+    handler: handler.modificarProducto
+    events:
+      - http:
+          path: productos/{codigo}
+          method: put
+          cors: true
+
+  eliminarProducto:
+    handler: handler.eliminarProducto
+    events:
+      - http:
+          path: productos/{codigo}
+          method: delete
+          cors: true
+
+resources:
+  Resources:
+    ProductosTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:provider.environment.TABLE_NAME}
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions:
+          - AttributeName: tenant_id
+            AttributeType: S
+          - AttributeName: codigo
+            AttributeType: S
+        KeySchema:
+          - AttributeName: tenant_id
+            KeyType: HASH
+          - AttributeName: codigo
+            KeyType: RANGE
+
