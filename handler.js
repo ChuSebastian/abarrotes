@@ -75,8 +75,17 @@ module.exports.buscarProducto = async (event) => {
 module.exports.modificarProducto = async (event) => {
   try {
     const tenant_id = validarToken(event);
-    const codigo = event.pathParameters.codigo;
+    const codigo = event.pathParameters?.codigo;
+
+    if (!codigo) {
+      throw new Error("Código no proporcionado en la ruta");
+    }
+
     const body = typeof event.body === "string" ? JSON.parse(event.body) : event.body;
+
+    if (!body || !body.nombre || body.precio === undefined || body.stock === undefined) {
+      throw new Error("Faltan campos obligatorios en el body");
+    }
 
     const params = {
       TableName: TABLE_NAME,
