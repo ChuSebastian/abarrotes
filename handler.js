@@ -55,7 +55,10 @@ module.exports.listarProductos = async (event) => {
 module.exports.buscarProducto = async (event) => {
   try {
     const tenant_id = validarToken(event);
-    const codigo = event.pathParameters.codigo;
+    const codigo = event.pathParameters?.codigo;
+    if (!codigo) {
+      throw new Error("Código no proporcionado");
+    }
 
     const result = await dynamodb.get({
       TableName: TABLE_NAME,
@@ -76,9 +79,8 @@ module.exports.modificarProducto = async (event) => {
   try {
     const tenant_id = validarToken(event);
     const codigo = event.pathParameters?.codigo;
-
     if (!codigo) {
-      throw new Error("Código no proporcionado en la ruta");
+      throw new Error("Código no proporcionado");
     }
 
     const body = typeof event.body === "string" ? JSON.parse(event.body) : event.body;
@@ -108,7 +110,10 @@ module.exports.modificarProducto = async (event) => {
 module.exports.eliminarProducto = async (event) => {
   try {
     const tenant_id = validarToken(event);
-    const codigo = event.pathParameters.codigo;
+    const codigo = event.pathParameters?.codigo;
+    if (!codigo) {
+      throw new Error("Código no proporcionado");
+    }
 
     await dynamodb.delete({
       TableName: TABLE_NAME,
@@ -128,13 +133,14 @@ module.exports.procesarCambiosDynamo = async (event) => {
     const anterior = AWS.DynamoDB.Converter.unmarshall(record.dynamodb.OldImage || {});
 
     console.log("🔄 Evento recibido:", tipo);
-    if (tipo === 'INSERT') {
+
+    if (tipo === "INSERT") {
       console.log("🟢 Producto creado:", nuevo);
-    } else if (tipo === 'MODIFY') {
+    } else if (tipo === "MODIFY") {
       console.log("🟡 Producto modificado:");
       console.log("Antes:", anterior);
       console.log("Después:", nuevo);
-    } else if (tipo === 'REMOVE') {
+    } else if (tipo === "REMOVE") {
       console.log("🔴 Producto eliminado:", anterior);
     }
   }
