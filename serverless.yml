@@ -58,6 +58,18 @@ functions:
           cors: true
           integration: lambda
 
+  procesarCambiosDynamo:
+    handler: handler.procesarCambiosDynamo
+    events:
+      - stream:
+          type: dynamodb
+          arn:
+            Fn::GetAtt:
+              - ProductosTable
+              - StreamArn
+          batchSize: 5
+          startingPosition: LATEST
+
 resources:
   Resources:
     ProductosTable:
@@ -75,4 +87,6 @@ resources:
             KeyType: HASH
           - AttributeName: codigo
             KeyType: RANGE
+        StreamSpecification:
+          StreamViewType: NEW_AND_OLD_IMAGES
 
