@@ -20,7 +20,7 @@ functions:
           path: /productos
           method: post
           cors: true
-          integration: lambda
+          proxy: true
 
   listarProductos:
     handler: handler.listarProductos
@@ -29,7 +29,7 @@ functions:
           path: /productos
           method: get
           cors: true
-          integration: lambda
+          proxy: true
 
   buscarProducto:
     handler: handler.buscarProducto
@@ -38,7 +38,7 @@ functions:
           path: /productos/{codigo}
           method: get
           cors: true
-          integration: lambda
+          proxy: true
 
   modificarProducto:
     handler: handler.modificarProducto
@@ -47,7 +47,7 @@ functions:
           path: /productos/{codigo}
           method: put
           cors: true
-          integration: lambda
+          proxy: true
 
   eliminarProducto:
     handler: handler.eliminarProducto
@@ -56,7 +56,7 @@ functions:
           path: /productos/{codigo}
           method: delete
           cors: true
-          integration: lambda
+          proxy: true
 
   procesarCambiosDynamo:
     handler: handler.procesarCambiosDynamo
