@@ -148,6 +148,7 @@ module.exports.procesarCambiosDynamo = async (event) => {
   return { statusCode: 200 };
 };
 
+const AWS = require("aws-sdk");
 const axios = require("axios");
 
 module.exports.actualizarProductos = async (event) => {
@@ -158,7 +159,9 @@ module.exports.actualizarProductos = async (event) => {
 
     const tenant_id = nuevo.tenant_id || anterior.tenant_id;
     const codigo = nuevo.codigo || anterior.codigo;
-    const elasticUrl = `http://es-${tenant_id}:9200/productos-${tenant_id}/_doc/${codigo}`;
+
+    // Usamos la IP elástica fija de Elasticsearch
+    const elasticUrl = `http://52.44.161.7:9200/productos-${tenant_id}/_doc/${codigo}`;
 
     try {
       if (tipo === "INSERT" || tipo === "MODIFY") {
