@@ -148,3 +148,31 @@ module.exports.procesarCambiosDynamo = async (event) => {
   return { statusCode: 200 };
 };
 
+const axios = require("axios");
+
+module.exports.actualizarProductos = async (event) => {
+  for (const record of event.Records) {
+    const tipo = record.eventName;
+    const nuevo = AWS.DynamoDB.Converter.unmarshall(record.dynamodb.NewImage || {});
+    const anterior = AWS.DynamoDB.Converter.unmarshall(record.dynamodb.OldImage || {});
+
+    const tenant_id = nuevo.tenant_id || anterior.tenant_id;
+    const codigo = nuevo.codigo || anterior.codigo;
+    const elasticUrl = `http://es-${tenant_id}:9200/productos-${tenant_id}/_doc/${codigo}`;
+
+    try {
+      if (tipo === "INSERT" || tipo === "MODIFY") {
+        await axios.put(elasticUrl, nuevo);
+        console.log(`📤 Producto sincronizado en Elasticsearch: ${codigo}`);
+      } else if (tipo === "REMOVE") {
+        await axios.delete(elasticUrl);
+        console.log(`🗑️ Producto eliminado de Elasticsearch: ${codigo}`);
+      }
+    } catch (error) {
+      console.error("❌ Error al conectar con Elasticsearch:", error.message);
+    }
+  }
+
+  return { statusCode: 200 };
+};
+

@@ -64,6 +64,19 @@ functions:
               - StreamArn
           batchSize: 5
           startingPosition: LATEST
+          actualizarProductos:
+
+    handler: handler.actualizarProductos
+    events:
+      - stream:
+          type: dynamodb
+          arn:
+            Fn::GetAtt:
+              - ProductosTable
+              - StreamArn
+          batchSize: 5
+          startingPosition: LATEST
+
 
 resources:
   Resources:
