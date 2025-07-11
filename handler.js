@@ -1,4 +1,5 @@
 const AWS = require("aws-sdk");
+const axios = require("axios");
 const { validarToken } = require("./utils/auth");
 
 const dynamodb = new AWS.DynamoDB.DocumentClient();
@@ -147,9 +148,6 @@ module.exports.procesarCambiosDynamo = async (event) => {
 
   return { statusCode: 200 };
 };
-
-const AWS = require("aws-sdk");
-const axios = require("axios");
 
 module.exports.actualizarProductos = async (event) => {
   for (const record of event.Records) {
