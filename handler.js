@@ -127,27 +127,27 @@ module.exports.eliminarProducto = async (event) => {
   }
 };
 
-module.exports.procesarCambiosDynamo = async (event) => {
-  for (const record of event.Records) {
-    const tipo = record.eventName;
-    const nuevo = AWS.DynamoDB.Converter.unmarshall(record.dynamodb.NewImage || {});
-    const anterior = AWS.DynamoDB.Converter.unmarshall(record.dynamodb.OldImage || {});
-
-    console.log("🔄 Evento recibido:", tipo);
-
-    if (tipo === "INSERT") {
-      console.log("🟢 Producto creado:", nuevo);
-    } else if (tipo === "MODIFY") {
-      console.log("🟡 Producto modificado:");
-      console.log("Antes:", anterior);
-      console.log("Después:", nuevo);
-    } else if (tipo === "REMOVE") {
-      console.log("🔴 Producto eliminado:", anterior);
-    }
-  }
-
-  return { statusCode: 200 };
-};
+// module.exports.procesarCambiosDynamo = async (event) => {
+//   for (const record of event.Records) {
+//     const tipo = record.eventName;
+//     const nuevo = AWS.DynamoDB.Converter.unmarshall(record.dynamodb.NewImage || {});
+//     const anterior = AWS.DynamoDB.Converter.unmarshall(record.dynamodb.OldImage || {});
+// 
+//     console.log("🔄 Evento recibido:", tipo);
+// 
+//     if (tipo === "INSERT") {
+//       console.log("🟢 Producto creado:", nuevo);
+//     } else if (tipo === "MODIFY") {
+//       console.log("🟡 Producto modificado:");
+//       console.log("Antes:", anterior);
+//       console.log("Después:", nuevo);
+//     } else if (tipo === "REMOVE") {
+//       console.log("🔴 Producto eliminado:", anterior);
+//     }
+//   }
+// 
+//   return { statusCode: 200 };
+// };
 
 module.exports.actualizarProductos = async (event) => {
   for (const record of event.Records) {
