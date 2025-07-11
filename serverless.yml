@@ -12,6 +12,11 @@ provider:
     TABLE_NAME: ProductosTable-dev
     JWT_SECRET: ${env:JWT_SECRET}
 
+package:
+  include:
+    - node_modules/**
+    - handler.js
+
 functions:
   crearProducto:
     handler: handler.crearProducto
@@ -77,7 +82,6 @@ functions:
           batchSize: 5
           startingPosition: LATEST
 
-
 resources:
   Resources:
     ProductosTable:
@@ -97,4 +101,5 @@ resources:
             KeyType: RANGE
         StreamSpecification:
           StreamViewType: NEW_AND_OLD_IMAGES
+
 
