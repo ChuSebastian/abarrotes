@@ -64,8 +64,8 @@ functions:
               - StreamArn
           batchSize: 5
           startingPosition: LATEST
-          actualizarProductos:
-
+        
+  actualizarProductos:
     handler: handler.actualizarProductos
     events:
       - stream:
